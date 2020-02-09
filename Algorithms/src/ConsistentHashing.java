@@ -24,12 +24,11 @@ class ConsistentHashing {
 		while (true) {
 			Request request = poll(); // This polling gets the request details
 			int server_to_be_sent_to = search_next_server(hash1(request));
-			send_request_to_server(request, server_to_be_sent_to); // this function should essentially route the request
-																	// to the server our load balancer assigns it to.
+			send_request_to_server(request, server_to_be_sent_to); // this function should essentially route the request to the server our load balancer assigns it to.
 		}
 	}
 
-	// initializing the server positions
+	// initializing the server positions in the loop
 	private void init(int initial_number_of_servers) {
 		for (int i = 0; i < initial_number_of_servers; i++) {
 			server_assignment(i);
