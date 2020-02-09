@@ -9,7 +9,7 @@ package com.github.saravanprathi.leetcode;
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class SymmetricTree_Recursive_101 {
     public boolean isSymmetric(TreeNode root) {
         if(root==null){
             return true;

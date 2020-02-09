@@ -12,7 +12,7 @@ import java.util.Queue;
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class SymmetricTree_Iterative_101 {
     public boolean isSymmetric(TreeNode root) {
     	if(root==null){
             return true;
