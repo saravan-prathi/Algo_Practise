@@ -41,12 +41,12 @@ class ConsistentHashing {
 		// passing the server number through a hash function log M times
 		//I am not sure how to implement the hash function yet though
 
-		temp.add(hash1(server_id+1)%M);
-		temp.add(hash1(server_id+2)%M);
+		temp.add(hash1(server_number+1)%M);
+		temp.add(hash1(server_number+2)%M);
 		//
 		// and so on till
 		//
-		temp.add(hash1(server_id+(log M))%M);
+		temp.add(hash1(server_number+(log M))%M);
 
 		// this function call will mark our loop with the server number in the positions
 		// present in the temp list. Hence this field remains null for all the positions
