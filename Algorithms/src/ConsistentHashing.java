@@ -1,4 +1,6 @@
 // Not developed fully yet
+//This is an attempt to develop the code of a Consistent Hashing algorithm that has been explained in one of the youtube videos of Gaurav Sen
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +24,8 @@ class ConsistentHashing {
 
 	public static void main() {
 		while (true) {
-			Request request = poll(); // This polling gets the request details
-			int server_to_be_sent_to = search_next_server(hash1(request));
+			Request request = poll(); // This polling is supposed to get the request details
+			int server_to_be_sent_to = search_next_server(hash1(request)%M);
 			send_request_to_server(request, server_to_be_sent_to); // this function should essentially route the request to the server our load balancer assigns it to.
 		}
 	}
@@ -41,12 +43,12 @@ class ConsistentHashing {
 		// passing the server number through a hash function log M times
 		//I am not sure how to implement the hash function yet though
 
-		temp.add(hash1(server_number+1)%M);
-		temp.add(hash1(server_number+2)%M);
+		temp.add(hash1(server_number+10000)%M);
+		temp.add(hash1(server_number+20000)%M);
 		//
 		// and so on till
 		//
-		temp.add(hash1(server_number+(log M))%M);
+		temp.add(hash1(server_number+(log M)*10000)%M);
 
 		// this function call will mark our loop with the server number in the positions
 		// present in the temp list. Hence this field remains null for all the positions
@@ -62,20 +64,11 @@ class ConsistentHashing {
 	}
 
 	private Integer search_next_server(int k) {
-		while (k < M) {
-			if (loop[k] != null)
-				return loop[k];
-			k++;
-		}
-		// reseting to zero if server is not found till the end of array, and restart
-		// searching for the server
-		k = 0;
-		while (k < M) {
-			if (loop[k] != null)
-				return loop[k];
-			k++;
-		}
-		return 0; // we don't expect this line to ever run
+		
+		while(loop[k]==null)
+			k=(k+1)%M;
+		
+		return loop[k];
 	}
 
 	public void add_server() {
