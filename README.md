@@ -1,3 +1,3 @@
-# Algo_Practise
+# Algorithms Practise
 
-This repository is for my flexibility to practise algorithms of various methods from multiple machines, so that I can stay in touch with the fundamentals of programming.  
+This repository is just for my flexibility to practise algorithms from multiple machines, so that I can stay in touch with the fundamentals of programming.  
